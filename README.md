@@ -1,13 +1,13 @@
 # black-list-devops
 
 
-## paso a paso
+## Paso a paso
 
   ####  1 Crear el ambiente 
   ####  2 pip install -r requirements.txt 
   ####  3 python run.py 
 
-# Para agregar un email a la lista negra:
+## Para agregar un email a la lista negra:
 
 curl -X POST http://127.0.0.1:5001/blacklists \
 -H "Content-Type: application/json" \
@@ -18,11 +18,11 @@ curl -X POST http://127.0.0.1:5001/blacklists \
     "blocked_reason": "Spam"
 }'
 
-# Para verificar si un email está en la lista negra:
+## Para verificar si un email está en la lista negra:
 
 curl http://127.0.0.1:5001/blacklists/test@example.com \
 -H "Authorization: Bearer blacklist-secret-token-2024"
 
-# Pruebas de postman en 
+## Pruebas de postman en 
 
  postman_collection.json
