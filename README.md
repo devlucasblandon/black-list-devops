@@ -3,9 +3,9 @@
 
 # correr con 
 
-  Crear el ambiente 
-  pip install -r requirements.txt 
-  python run.py 
+  ### Crear el ambiente 
+  ### pip install -r requirements.txt 
+  ### python run.py 
 
 # Para agregar un email a la lista negra:
 
@@ -22,3 +22,7 @@ curl -X POST http://127.0.0.1:5001/blacklists \
 
 curl http://127.0.0.1:5001/blacklists/test@example.com \
 -H "Authorization: Bearer blacklist-secret-token-2024"
+
+# Pruebas de postman en 
+
+ postman_collection.json
