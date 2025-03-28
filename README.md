@@ -7,6 +7,8 @@
   ####  2 pip install -r requirements.txt 
   ####  3 python run.py 
 
+# curl
+
 ## Para agregar un email a la lista negra:
 
 curl -X POST http://127.0.0.1:5001/blacklists \
