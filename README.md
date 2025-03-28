@@ -1,11 +1,11 @@
 # black-list-devops
 
 
-# correr con 
+## paso a paso
 
-  ### Crear el ambiente 
-  ### pip install -r requirements.txt 
-  ### python run.py 
+  ####  1 Crear el ambiente 
+  ####  2 pip install -r requirements.txt 
+  ####  3 python run.py 
 
 # Para agregar un email a la lista negra:
 
