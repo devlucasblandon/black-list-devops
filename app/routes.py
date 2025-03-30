@@ -4,6 +4,7 @@ from app import db
 from app.auth import require_token
 
 blacklist_bp = Blueprint('blacklist', __name__)
+health_bp = Blueprint('health', __name__)
 
 @blacklist_bp.route('', methods=['POST'])
 @require_token
@@ -68,3 +69,6 @@ def check_blacklist(email):
             'success': False,
             'message': f'Error al verificar el email: {str(e)}'
         }), 500 
+@health_bp.route('/', methods=["GET"])
+def index():
+    return {"message": "API running"}, 200
