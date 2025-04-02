@@ -2,8 +2,15 @@ from flask import Blueprint, request, jsonify
 from app.models import Blacklist
 from app import db
 from app.auth import require_token
+from datetime import datetime
 
 blacklist_bp = Blueprint('blacklist', __name__)
+
+def get_client_ip():
+    # Obtener la IP real del cliente, considerando proxies
+    if 'X-Forwarded-For' in request.headers:
+        return request.headers['X-Forwarded-For'].split(',')[0]
+    return request.remote_addr
 
 @blacklist_bp.route('', methods=['POST'])
 @require_token
@@ -20,7 +27,9 @@ def create_blacklist():
         new_blacklist = Blacklist(
             email=data['email'],
             app_uuid=data['app_uuid'],
-            blocked_reason=data['blocked_reason']
+            blocked_reason=data['blocked_reason'],
+            request_ip=get_client_ip(),
+            request_time=datetime.utcnow()
         )
 
         db.session.add(new_blacklist)
@@ -53,7 +62,9 @@ def check_blacklist(email):
                     'email': blacklist_entry.email,
                     'blocked_reason': blacklist_entry.blocked_reason,
                     'app_uuid': blacklist_entry.app_uuid,
-                    'created_at': blacklist_entry.created_at.isoformat()
+                    'created_at': blacklist_entry.created_at.isoformat(),
+                    'request_ip': blacklist_entry.request_ip,
+                    'request_time': blacklist_entry.request_time.isoformat()
                 }
             }), 200
         else:
