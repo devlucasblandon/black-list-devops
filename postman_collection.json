@@ -67,6 +67,16 @@
                                     "pm.test('Email is saved correctly', function () {",
                                     "    var jsonData = pm.response.json();",
                                     "    pm.expect(jsonData.data.email).to.eql('test@example.com');",
+                                    "});",
+                                    "pm.test('IP address is present', function () {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.expect(jsonData.data.request_ip).to.be.a('string');",
+                                    "    pm.expect(jsonData.data.request_ip.length).to.be.at.least(7);",
+                                    "});",
+                                    "pm.test('Request time is present', function () {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.expect(jsonData.data.request_time).to.be.a('string');",
+                                    "    pm.expect(new Date(jsonData.data.request_time)).to.be.a('Date');",
                                     "});"
                                 ]
                             }
@@ -148,6 +158,16 @@
                                     "pm.test('Email is blacklisted', function () {",
                                     "    var jsonData = pm.response.json();",
                                     "    pm.expect(jsonData.is_blacklisted).to.be.true;",
+                                    "});",
+                                    "pm.test('IP address is present in response', function () {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.expect(jsonData.data.request_ip).to.be.a('string');",
+                                    "    pm.expect(jsonData.data.request_ip.length).to.be.at.least(7);",
+                                    "});",
+                                    "pm.test('Request time is present in response', function () {",
+                                    "    var jsonData = pm.response.json();",
+                                    "    pm.expect(jsonData.data.request_time).to.be.a('string');",
+                                    "    pm.expect(new Date(jsonData.data.request_time)).to.be.a('Date');",
                                     "});"
                                 ]
                             }
