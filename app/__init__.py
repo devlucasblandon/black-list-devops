@@ -10,8 +10,10 @@ def create_app():
     
     db.init_app(app)
     
-    from app.routes import blacklist_bp
+    from app.routes import blacklist_bp, health_bp
     app.register_blueprint(blacklist_bp, url_prefix='/blacklists')
+    app.register_blueprint(health_bp, url_prefix='')
+
     
     with app.app_context():
         db.create_all()
